@@ -30,9 +30,21 @@
 }
 
 .site-header__mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 12px;
   letter-spacing: 0.24em;
   white-space: nowrap;
+}
+
+.site-header__mark svg {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-soft);
+}
+
+.site-header__mark:hover svg {
+  transform: translateY(-1px);
 }
 
 .site-header__nav {

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { projects } from '../../data/projects.js';
 import { site, navigation } from '../../data/site.js';
 import { useReducedMotion } from '../../hooks/useReducedMotion.js';
+import { LogoMark } from '../brand/LogoMark.jsx';
 import './fullscreen-menu.css';
 
 const FOCUSABLE = 'a[href], button:not([disabled])';
@@ -65,7 +66,10 @@ export function FullscreenMenu({ open, onClose, triggerRef }) {
           transition={{ duration: reducedMotion ? 0 : 0.4 }}
         >
           <div className="fullscreen-menu__top">
-            <span className="type-mono">A—Y&nbsp;&nbsp;FULL INDEX</span>
+            <span className="type-mono fullscreen-menu__mark">
+              <LogoMark size={18} />
+              FULL INDEX
+            </span>
             <button type="button" className="fullscreen-menu__close type-mono" onClick={onClose}>
               CLOSE — ESC
             </button>

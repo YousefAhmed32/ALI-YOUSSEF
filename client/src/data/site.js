@@ -1,6 +1,5 @@
 export const site = {
   name: 'ALI YOUSSEF',
-  initials: 'A—Y',
   disciplines: ['INTERIOR DESIGNER', 'ARCHITECTURAL DESIGNER', 'SPATIAL DESIGNER'],
   based: 'LEBANON',
   city: 'TO BE SUPPLIED',

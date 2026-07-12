@@ -48,7 +48,9 @@ export function SiteFooter() {
         </nav>
       </div>
 
-      <div className="site-footer__credit">
+      <span className="site-footer__divider" aria-hidden="true" />
+
+      <p className="site-footer__credit">
         Designed &amp; Developed by{' '}
         <a
           href={DEVELOPER_WHATSAPP_URL}
@@ -59,7 +61,7 @@ export function SiteFooter() {
         >
           {DEVELOPER_NAME}
         </a>
-      </div>
+      </p>
     </footer>
   );
 }

@@ -92,10 +92,15 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  align-items: baseline;
+  align-items: center;
   border-top: 1px solid rgba(237, 232, 219, 0.18);
   padding-top: 26px;
   font-size: 10.5px;
   letter-spacing: 0.22em;
   color: var(--paper-5);
+}
+
+.closing__footer-mark {
+  flex-shrink: 0;
+  opacity: 0.8;
 }

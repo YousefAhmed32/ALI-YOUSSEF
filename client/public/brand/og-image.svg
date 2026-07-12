@@ -1,0 +1,13 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#131210" />
+  <g transform="translate(339, 233) scale(1.2)">
+    <g fill="none" stroke="#f2efe7" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
+      <path d="M14,98 L44,16 L76,62 L106,16" />
+      <path d="M76,62 L76,76" />
+      <path d="M76,84 L76,98" />
+    </g>
+    <line x1="140" y1="30" x2="140" y2="84" stroke="#f2efe7" stroke-width="1" opacity="0.3" />
+    <text x="164" y="58" font-family="Arial, Helvetica, sans-serif" font-size="30" letter-spacing="6" fill="#f2efe7" dominant-baseline="central">ALI YOUSSEF</text>
+  </g>
+  <text x="600" y="412" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="5" fill="#8a8072" text-anchor="middle">INTERIOR &#8212; ARCHITECTURAL &#8212; SPATIAL DESIGN</text>
+</svg>

@@ -12,11 +12,17 @@
 .fullscreen-menu__top {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   border-bottom: 1px solid rgba(237, 232, 219, 0.2);
   padding-bottom: 20px;
   font-size: 12px;
   letter-spacing: 0.24em;
+}
+
+.fullscreen-menu__mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .fullscreen-menu__close {

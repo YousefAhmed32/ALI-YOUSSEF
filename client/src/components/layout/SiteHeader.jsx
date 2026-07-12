@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { site, navigation } from '../../data/site.js';
 import { useSectionTheme } from '../../hooks/useSectionTheme.js';
 import { MagneticLink } from '../interaction/MagneticLink.jsx';
+import { LogoMark } from '../brand/LogoMark.jsx';
 import './site-header.css';
 
 export function SiteHeader({ onOpenMenu, menuOpen, menuTriggerRef }) {
@@ -36,7 +37,8 @@ export function SiteHeader({ onOpenMenu, menuOpen, menuTriggerRef }) {
         .join(' ')}
     >
       <Link to="/" className="site-header__mark type-mono">
-        {site.initials}&nbsp;&nbsp;{site.name}
+        <LogoMark size={20} />
+        {site.name}
       </Link>
       <nav className="site-header__nav" aria-label="Primary">
         {navigation.map((item) => (

@@ -3,6 +3,7 @@ import { SplitTextReveal } from '../components/typography/SplitTextReveal.jsx';
 import { site } from '../data/site.js';
 import { projects } from '../data/projects.js';
 import { isUnset } from '../utils/placeholder.js';
+import { LogoMark } from '../components/brand/LogoMark.jsx';
 import './studio-page.css';
 
 export function StudioPage() {
@@ -16,7 +17,7 @@ export function StudioPage() {
         <p className="studio-page__quote">&ldquo;{site.quote}&rdquo;</p>
 
         <div className="studio-page__portrait" aria-hidden="true">
-          <span className="studio-page__portrait-mark type-mono">{site.initials}</span>
+          <LogoMark size={56} className="studio-page__portrait-mark" />
         </div>
 
         <div className="studio-page__grid">

@@ -3,6 +3,7 @@ import { getProjectBySlug } from '../../data/projects.js';
 import { site } from '../../data/site.js';
 import { SplitTextReveal } from '../typography/SplitTextReveal.jsx';
 import { MagneticLink } from '../interaction/MagneticLink.jsx';
+import { LogoMark } from '../brand/LogoMark.jsx';
 import './closing-section.css';
 
 const backdrop = getProjectBySlug('veiled-stone-house');
@@ -45,7 +46,7 @@ export function ClosingSection() {
       </MagneticLink>
 
       <div className="type-mono closing__footer">
-        <span>&copy; MMXXVI — {site.name}</span>
+        <LogoMark size={16} className="closing__footer-mark" aria-hidden="true" />
         <span>MASS / OPENING / LIGHT</span>
         <span>MADE AS ARCHITECTURE, NOT A PAGE</span>
       </div>
