@@ -1,0 +1,78 @@
+.craftsmanship {
+  position: relative;
+  background: var(--black-2);
+  color: var(--ivory-1);
+  padding: clamp(70px, 10vh, 120px) var(--gutter) clamp(90px, 12vh, 140px);
+  display: grid;
+  grid-template-columns: minmax(300px, 42%) 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.craftsmanship__media {
+  position: sticky;
+  top: 96px;
+}
+
+.craftsmanship__media-inner {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background: var(--black-1);
+  cursor: zoom-in;
+}
+
+.craftsmanship__media-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.96);
+}
+
+.craftsmanship__studio-note {
+  margin-top: 18px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--paper-5);
+}
+
+.craftsmanship__text {
+  padding-top: clamp(20px, 6vh, 80px);
+  max-width: 46ch;
+}
+
+.craftsmanship__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--paper-5);
+  margin-bottom: 28px;
+}
+
+.craftsmanship__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 5.4vw, 68px);
+  line-height: 1.06;
+  letter-spacing: -0.012em;
+  margin: 0 0 32px;
+  color: var(--ivory-0);
+}
+
+.craftsmanship__copy {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--paper-3);
+}
+
+@media (max-width: 900px) {
+  .craftsmanship {
+    grid-template-columns: 1fr;
+  }
+  .craftsmanship__media {
+    position: static;
+  }
+  .craftsmanship__text {
+    padding-top: 0;
+  }
+}

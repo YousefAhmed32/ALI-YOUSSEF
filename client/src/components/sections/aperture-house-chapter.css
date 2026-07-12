@@ -1,0 +1,120 @@
+.aperture-chapter {
+  position: relative;
+  background: var(--ivory-0);
+  padding: clamp(70px, 12vh, 130px) 0 clamp(80px, 12vh, 140px);
+  overflow: hidden;
+}
+
+.aperture-chapter__ghost {
+  position: absolute;
+  right: -40px;
+  top: 60px;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(160px, 26vw, 380px);
+  line-height: 1;
+  color: rgba(22, 21, 17, 0.05);
+  pointer-events: none;
+}
+
+.aperture-chapter__head {
+  position: relative;
+  padding: 0 var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 64px;
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  color: var(--ink-3);
+}
+
+.aperture-chapter__frames {
+  position: relative;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  align-items: end;
+}
+
+.aperture-chapter__frame-a {
+  position: relative;
+  display: block;
+  height: clamp(320px, 48vh, 640px);
+}
+
+.aperture-chapter__panel {
+  position: absolute;
+  right: -1px;
+  top: 44px;
+  width: 280px;
+  max-width: 60vw;
+  background: rgba(242, 239, 231, 0.86);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(22, 21, 17, 0.25);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--ink-2);
+}
+
+.aperture-chapter__panel-title {
+  color: var(--ink-0);
+}
+
+.aperture-chapter__panel .is-muted {
+  opacity: 0.6;
+}
+
+.aperture-chapter__frame-label {
+  position: absolute;
+  left: 0;
+  bottom: -46px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-3);
+}
+
+.aperture-chapter__frame-b {
+  position: relative;
+}
+
+.aperture-chapter__crop {
+  display: block;
+  width: 100%;
+  height: clamp(240px, 36vh, 470px);
+  background-repeat: no-repeat;
+  cursor: zoom-in;
+}
+
+.aperture-chapter__quote {
+  position: relative;
+  padding: clamp(70px, 10vw, 110px) var(--gutter) 0;
+  max-width: 720px;
+  margin: 0;
+}
+
+.aperture-chapter__quote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(21px, 2.4vw, 29px);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+@media (max-width: 760px) {
+  .aperture-chapter__frames {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .aperture-chapter__panel {
+    position: static;
+    width: auto;
+    max-width: none;
+    margin-top: 16px;
+  }
+}

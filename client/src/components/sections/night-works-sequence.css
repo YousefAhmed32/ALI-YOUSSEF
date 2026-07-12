@@ -1,0 +1,136 @@
+.night-works {
+  position: relative;
+  background: var(--black-1);
+  color: var(--ivory-1);
+  padding: clamp(70px, 10vh, 120px) 0 clamp(80px, 11vh, 130px);
+}
+
+.night-works__head {
+  padding: 0 var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 70px;
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  color: var(--paper-5);
+}
+
+.night-works__strata {
+  position: relative;
+  display: block;
+  height: clamp(320px, 52vh, 640px);
+  margin: 0 var(--gutter);
+}
+
+.night-works__strata img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.night-works__strata-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14, 13, 11, 0.8) 0%, rgba(14, 13, 11, 0) 44%);
+}
+
+.night-works__strata-title {
+  position: absolute;
+  left: 0;
+  bottom: 44px;
+  padding-left: 0;
+}
+
+.night-works__ghost {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: 1;
+  color: rgba(237, 232, 219, 0.3);
+}
+
+.night-works__strata-title h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1;
+  margin: 8px 0 0;
+  color: var(--ivory-0);
+}
+
+.night-works__strata-note {
+  position: absolute;
+  right: 0;
+  bottom: 52px;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--paper-2);
+  text-align: right;
+}
+
+.night-works__pair {
+  position: relative;
+  margin: clamp(60px, 8vw, 110px) var(--gutter) 0;
+  display: grid;
+  grid-template-columns: 1.3fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+.night-works__pair-a,
+.night-works__pair-b {
+  position: relative;
+  height: clamp(300px, 44vh, 540px);
+}
+
+.night-works__pair-b {
+  height: clamp(260px, 38vh, 460px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.night-works__pair-numeral {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(60px, 8vw, 150px);
+  line-height: 0.9;
+  color: rgba(237, 232, 219, 0.1);
+  text-align: center;
+}
+
+.night-works__pair-caption {
+  display: block;
+  margin-top: 16px;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  color: var(--paper-5);
+  transition: color 0.2s ease;
+}
+
+.night-works__pair-caption:hover {
+  color: var(--ivory-0);
+}
+
+.night-works__pair-caption--right {
+  text-align: right;
+}
+
+.night-works__quote {
+  margin: clamp(70px, 9vw, 110px) var(--gutter) 0;
+  max-width: 700px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(21px, 2.4vw, 29px);
+  line-height: 1.45;
+  color: var(--paper-3);
+}
+
+@media (max-width: 860px) {
+  .night-works__pair {
+    grid-template-columns: 1fr;
+  }
+  .night-works__pair-numeral {
+    display: none;
+  }
+}

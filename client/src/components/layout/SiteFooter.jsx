@@ -1,0 +1,65 @@
+import { Link } from 'react-router-dom';
+import { site } from '../../data/site.js';
+import { contact, getWhatsAppUrl } from '../../data/contact.js';
+import './site-footer.css';
+
+const ROMAN_NUMERALS = [
+  [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+  [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
+  [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I'],
+];
+
+function toRoman(num) {
+  let result = '';
+  let remaining = num;
+  for (const [value, symbol] of ROMAN_NUMERALS) {
+    while (remaining >= value) {
+      result += symbol;
+      remaining -= value;
+    }
+  }
+  return result;
+}
+
+const CURRENT_YEAR_ROMAN = toRoman(new Date().getFullYear());
+
+const DEVELOPER_NAME = 'YANSY TECH';
+const DEVELOPER_WHATSAPP_URL = `https://wa.me/201090385390?text=${encodeURIComponent(
+  `Hello ${DEVELOPER_NAME},\nI found your work through this website and I'd like to discuss building a website for my business.`
+)}`;
+
+export function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <div className="site-footer__row type-mono">
+        <span>&copy; {CURRENT_YEAR_ROMAN} — {site.name}</span>
+        <nav className="site-footer__links" aria-label="Contact">
+          <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="site-footer__link">
+            WHATSAPP
+          </a>
+          {contact.instagram ? (
+            <a href={contact.instagram} target="_blank" rel="noopener noreferrer" className="site-footer__link">
+              INSTAGRAM
+            </a>
+          ) : null}
+          <Link to="/contact" className="site-footer__link">
+            {site.based}
+          </Link>
+        </nav>
+      </div>
+
+      <div className="site-footer__credit">
+        Designed &amp; Developed by{' '}
+        <a
+          href={DEVELOPER_WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="site-footer__credit-link"
+          aria-label={`Contact ${DEVELOPER_NAME} on WhatsApp — opens in a new tab`}
+        >
+          {DEVELOPER_NAME}
+        </a>
+      </div>
+    </footer>
+  );
+}

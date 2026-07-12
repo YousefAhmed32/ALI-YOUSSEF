@@ -1,0 +1,104 @@
+.studio-page {
+  background: #eae4d5;
+  padding: clamp(120px, 18vh, 170px) var(--gutter) clamp(90px, 13vh, 140px);
+}
+
+.studio-page__label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ink-3);
+  margin-bottom: 34px;
+}
+
+.studio-page__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(56px, 10vw, 130px);
+  line-height: 0.92;
+  margin: 0;
+  letter-spacing: -0.012em;
+}
+
+.studio-page__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20px, 2.6vw, 30px);
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 44px 0 0;
+  max-width: 620px;
+}
+
+.studio-page__portrait {
+  margin-top: 64px;
+  width: min(340px, 100%);
+  aspect-ratio: 340 / 420;
+  border: 1px solid rgba(22, 21, 17, 0.25);
+  background: linear-gradient(155deg, #e2dbc9 0%, #eae4d5 60%, #ddd5c1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.studio-page__portrait-mark {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 64px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  opacity: 0.55;
+}
+
+.studio-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 320px));
+  gap: 48px;
+  margin-top: 70px;
+}
+
+.studio-page__block-title {
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  color: var(--ink-3);
+  border-bottom: 1px solid rgba(22, 21, 17, 0.25);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+.studio-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 14.5px;
+  letter-spacing: 0.08em;
+  color: var(--ink-1);
+}
+
+.studio-page__practice {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  color: var(--ink-2);
+}
+
+.studio-page__note {
+  max-width: 620px;
+  margin-top: 70px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+@media (max-width: 640px) {
+  .studio-page__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 56px;
+  }
+  .studio-page__portrait {
+    margin-top: 48px;
+    width: 100%;
+  }
+}

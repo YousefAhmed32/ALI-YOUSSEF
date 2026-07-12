@@ -1,0 +1,53 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+}
+
+.custom-cursor__core {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink-0);
+  transition: width 0.25s var(--ease-soft), height 0.25s var(--ease-soft), background 0.25s var(--ease-soft);
+}
+
+.custom-cursor__label {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ivory-0);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.custom-cursor--view .custom-cursor__core,
+.custom-cursor--open .custom-cursor__core,
+.custom-cursor--drag .custom-cursor__core,
+.custom-cursor--next .custom-cursor__core {
+  width: 64px;
+  height: 64px;
+  background: rgba(22, 21, 17, 0.92);
+}
+
+.custom-cursor--view .custom-cursor__label,
+.custom-cursor--open .custom-cursor__label,
+.custom-cursor--drag .custom-cursor__label,
+.custom-cursor--next .custom-cursor__label {
+  opacity: 1;
+}

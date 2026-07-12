@@ -1,0 +1,74 @@
+.manifesto {
+  position: relative;
+  background: var(--black-1);
+  color: var(--ivory-0);
+  padding: clamp(60px, 8vh, 60px) var(--gutter) clamp(100px, 16vh, 170px);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(237, 232, 219, 0.1);
+  --light-x: 50%;
+  --light-y: 50%;
+}
+
+.manifesto__field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(480px circle at var(--light-x) var(--light-y), rgba(169, 141, 107, 0.08), transparent 70%);
+  transition: background 0.1s linear;
+}
+
+.manifesto__rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 58%;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(242, 239, 231, 0), rgba(242, 239, 231, 0.5), rgba(242, 239, 231, 0));
+}
+
+.manifesto__label {
+  position: relative;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--paper-5);
+  margin-bottom: 64px;
+}
+
+.manifesto__lines {
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 7vw, 98px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.manifesto__line--indent-lg {
+  margin-left: clamp(0px, 14vw, 200px);
+}
+
+.manifesto__line--indent-md {
+  margin-left: clamp(0px, 7vw, 100px);
+}
+
+.manifesto__line--emphasis {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--bronze-light);
+}
+
+.manifesto__note {
+  position: relative;
+  margin-top: 76px;
+  margin-left: clamp(0px, 14vw, 200px);
+  max-width: 470px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--paper-4);
+}
+
+@media (max-width: 760px) {
+  .manifesto__note {
+    margin-left: 0;
+  }
+}

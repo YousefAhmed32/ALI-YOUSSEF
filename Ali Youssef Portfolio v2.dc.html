@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;family=Archivo:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#0E0D0B;}
+*{box-sizing:border-box;}
+::selection{background:#8A6F52;color:#F2EFE7;}
+a{color:#8A6F52;text-decoration:none;}
+a:hover{color:#161511;}
+</style>
+</helmet>
+
+<div style="width:1440px;margin:0 auto;background:#F2EFE7;color:#161511;font-family:'Archivo',sans-serif;position:relative;">
+
+  <!-- ===== FULLSCREEN INDEX OVERLAY (menu open state) ===== -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:100;background:rgba(17,16,13,.94);color:#EDE8DB;display:flex;flex-direction:column;padding:44px 64px 56px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(237,232,219,.2);padding-bottom:22px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;">A&mdash;Y&nbsp;&nbsp;FULL INDEX</div>
+        <div onClick="{{ closeMenu }}" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;cursor:pointer;border:1px solid rgba(237,232,219,.4);padding:10px 18px;" style-hover="background:#EDE8DB;color:#161511;">CLOSE &mdash; ESC</div>
+      </div>
+      <div style="flex:1;display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:center;">
+        <div>
+          <sc-for list="{{ menuWorks }}" as="mw" hint-placeholder-count="9">
+            <div onMouseEnter="{{ mw.onEnter }}" style="display:flex;align-items:baseline;gap:28px;padding:13px 0;border-bottom:1px solid rgba(237,232,219,.12);cursor:pointer;color:#B7AD9D;transition:color .2s;" style-hover="color:#F2EFE7;">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;width:44px;">{{ mw.index }}</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:37px;font-weight:500;letter-spacing:.02em;">{{ mw.name }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;margin-left:auto;opacity:.6;">{{ mw.typology }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div>
+          <img src="{{ menuSrc }}" alt="Index preview" style="width:100%;height:480px;object-fit:cover;display:block;filter:saturate(.92);">
+          <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8A8072;margin-top:14px;">
+            <span>{{ menuCode }}</span><span>{{ menuName }}</span>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;color:#8A8072;">BASED IN LEBANON&nbsp;&nbsp;&middot;&nbsp;&nbsp;MASS / OPENING / LIGHT</div>
+    </div>
+  </sc-if>
+
+  <!-- ===== PERSISTENT NAV (sticky, adapts over imagery) ===== -->
+  <div style="position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(242,239,231,.82);backdrop-filter:blur(6px);border-bottom:1px solid rgba(22,21,17,.14);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;">A&mdash;Y&nbsp;&nbsp;ALI YOUSSEF</div>
+    <div style="display:flex;gap:40px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;align-items:center;">
+      <span style="border-bottom:1px solid #161511;padding-bottom:2px;cursor:pointer;">WORK</span>
+      <span onClick="{{ openMenu }}" style="opacity:.6;cursor:pointer;" style-hover="opacity:1;">INDEX</span>
+      <span style="opacity:.6;cursor:pointer;" style-hover="opacity:1;">STUDIO</span>
+      <span style="opacity:.6;cursor:pointer;" style-hover="opacity:1;">CONTACT</span>
+      <span style="font-size:10px;color:#8A6F52;">{{ navProgress }}</span>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 01 — ARRIVAL ===== -->
+  <section data-screen-label="S01 Arrival" style="position:relative;height:880px;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:url('img/p5-suspended.jpg') center/cover;"></div>
+    <!-- shaded corridor: translucent limestone plane sliding from the left -->
+    <div style="position:absolute;top:0;bottom:0;left:0;width:560px;background:linear-gradient(to right,rgba(242,239,231,.96) 0%,rgba(242,239,231,.88) 62%,rgba(242,239,231,0) 100%);"></div>
+    <div style="position:absolute;top:0;bottom:0;left:560px;width:1px;background:rgba(22,21,17,.25);"></div>
+
+    <div style="position:absolute;left:48px;top:96px;z-index:2;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.28em;color:#6E6455;margin-bottom:34px;">SCENE 01 &mdash; ARRIVAL&nbsp;&nbsp;&middot;&nbsp;&nbsp;BASED IN LEBANON</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:150px;line-height:.9;letter-spacing:-.015em;">ALI</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:150px;line-height:.9;letter-spacing:-.015em;margin-left:118px;">YOUSSEF</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-top:52px;font-size:14px;letter-spacing:.15em;font-weight:500;">
+        <div>INTERIOR DESIGNER</div>
+        <div style="color:#8A6F52;">ARCHITECTURAL DESIGNER</div>
+        <div>SPATIAL DESIGNER</div>
+      </div>
+    </div>
+
+    <!-- floating metadata over the image -->
+    <div style="position:absolute;right:48px;bottom:48px;background:rgba(17,16,13,.55);backdrop-filter:blur(3px);border:1px solid rgba(237,232,219,.25);padding:22px 26px;display:flex;flex-direction:column;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#EDE8DB;">
+      <div>PROJECT&nbsp;&nbsp;003 &mdash; SUSPENDED HOUSE</div>
+      <div>MASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRAVERTINE / GLASS / WATER</div>
+      <div style="opacity:.65;">LOCATION&nbsp;[ TO BE CONFIRMED ]</div>
+    </div>
+
+    <!-- scroll cue + name of the tension -->
+    <div style="position:absolute;left:48px;bottom:48px;display:flex;align-items:center;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.26em;color:#4C4438;">
+      <span>MASS</span><span style="width:44px;height:1px;background:#4C4438;display:inline-block;"></span><span>OPENING</span><span style="width:44px;height:1px;background:#4C4438;display:inline-block;"></span><span>LIGHT</span>
+    </div>
+    <div style="position:absolute;right:48px;top:112px;writing-mode:vertical-rl;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.3em;color:rgba(237,232,219,.85);">SCROLL &mdash; THE APERTURE OPENS</div>
+  </section>
+
+  <!-- ===== SCENE 02 — PROJECT 001, STICKY CHAPTER ===== -->
+  <section data-screen-label="S02 Veiled Stone House" style="position:relative;background:#1B1712;color:#EDE8DB;">
+    <div style="display:grid;grid-template-columns:480px 1fr;">
+      <!-- sticky title rail -->
+      <div style="position:relative;">
+        <div style="position:sticky;top:120px;padding:96px 56px 96px 48px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#8A8072;margin-bottom:36px;">SCENE 02 &mdash; IMMERSION&nbsp;&nbsp;001 / 009</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:120px;line-height:1;color:rgba(237,232,219,.16);">001</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:66px;line-height:1;margin:22px 0 30px;color:#F2EFE7;">VEILED<br>STONE<br>HOUSE</h2>
+          <p style="font-size:14.5px;line-height:1.7;color:#9C9284;margin:0 0 40px;max-width:300px;text-wrap:pretty;">A closed limestone mass, cut once. Dark marble and lattice hold the opening; lanterns keep it warm after the sun leaves the wall.</p>
+          <div style="display:flex;flex-direction:column;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#8A8072;">
+            <div>TYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRIVATE RESIDENCE</div>
+            <div>SURFACE&nbsp;&nbsp;LIMESTONE / MARBLE / WALNUT</div>
+            <div>STATUS&nbsp;&nbsp;&nbsp;VISUALISATION</div>
+            <div style="opacity:.6;">LOCATION&nbsp;[ TO BE CONFIRMED ]</div>
+          </div>
+          <div style="margin-top:48px;display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;color:#8A6F52;">
+            <span style="width:34px;height:34px;border:1px solid #8A6F52;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;">&darr;</span>
+            <span>TITLE HOLDS &mdash; IMAGES MOVE</span>
+          </div>
+        </div>
+      </div>
+      <!-- scrolling image sequence -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:760px;background:url('img/p1-veiled-stone.jpg') center/cover;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="height:470px;background:url('img/p1-veiled-stone.jpg');background-size:300%;background-position:30% 20%;"></div>
+          <div style="height:470px;background:url('img/p1-veiled-stone.jpg');background-size:380%;background-position:52% 30%;"></div>
+        </div>
+        <div style="position:relative;height:560px;background:url('img/p1-veiled-stone.jpg');background-size:170%;background-position:50% 88%;">
+          <div style="position:absolute;left:0;bottom:0;background:rgba(27,23,18,.78);backdrop-filter:blur(2px);padding:16px 22px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#CBC2B0;">THE APPROACH &mdash; SHADE BEFORE THRESHOLD</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 03 — PROJECT 002, LIGHT GALLERY ===== -->
+  <section data-screen-label="S03 Aperture House" style="position:relative;background:#F2EFE7;padding:130px 0 140px;overflow:hidden;">
+    <div style="position:absolute;right:-40px;top:60px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:380px;line-height:1;color:rgba(22,21,17,.05);">002</div>
+    <div style="padding:0 48px;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:64px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">SCENE 03 &mdash; THE GALLERY&nbsp;&nbsp;002 / 009</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">TWO SYNCHRONISED FRAMES</div>
+    </div>
+
+    <div style="position:relative;padding:0 48px;display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:end;">
+      <div style="position:relative;height:640px;">
+        <div style="position:absolute;inset:0;background:url('img/p2-aperture.jpg') center/cover;"></div>
+        <!-- translucent technical panel crossing the image -->
+        <div style="position:absolute;right:-1px;top:44px;width:290px;background:rgba(242,239,231,.82);backdrop-filter:blur(4px);border:1px solid rgba(22,21,17,.25);padding:22px 24px;display:flex;flex-direction:column;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;color:#4C4438;">
+          <div style="color:#161511;">APERTURE HOUSE</div>
+          <div>FRAME&nbsp;&nbsp;&nbsp;CONCRETE, SINGLE CUT</div>
+          <div>WATER&nbsp;&nbsp;&nbsp;FALLS THROUGH VOID</div>
+          <div>TYPE&nbsp;&nbsp;&nbsp;&nbsp;RESIDENTIAL</div>
+          <div style="opacity:.6;">LOCATION&nbsp;[ TBC ]</div>
+        </div>
+        <div style="position:absolute;left:0;bottom:-46px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#6E6455;">FRAME A &mdash; THE FULL CUT</div>
+      </div>
+      <div style="position:relative;">
+        <div style="height:470px;background:url('img/p2-aperture.jpg');background-size:300%;background-position:62% 42%;"></div>
+        <div style="position:absolute;left:0;bottom:-46px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#6E6455;">FRAME B &mdash; THE FALLING WATER</div>
+        <!-- cursor state chip -->
+        <div style="position:absolute;right:-26px;top:-26px;width:76px;height:76px;border-radius:50%;background:#161511;color:#F2EFE7;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;">VIEW</div>
+      </div>
+    </div>
+
+    <div style="padding:110px 48px 0;max-width:720px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:29px;line-height:1.45;color:#4C4438;margin:0;text-wrap:pretty;">The opening is the room. Everything else is wall, waiting.</p>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 04 — MOMENT A: FULL-VIEWPORT REVEAL ===== -->
+  <section data-screen-label="S04 Suspended House Full Reveal" style="position:relative;height:860px;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:url('img/p5-suspended.jpg') center/cover;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,11,.66) 0%,rgba(14,13,11,0) 40%);"></div>
+    <div style="position:absolute;left:0;right:0;top:0;height:1px;background:rgba(237,232,219,.4);"></div>
+    <div style="position:absolute;left:48px;bottom:56px;color:#F2EFE7;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.26em;color:#CBC2B0;margin-bottom:18px;">SCENE 04 &mdash; FULL REVEAL&nbsp;&nbsp;003 / 009</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:96px;line-height:.95;margin:0;letter-spacing:-.012em;">SUSPENDED HOUSE</h2>
+    </div>
+    <div style="position:absolute;right:48px;bottom:64px;display:flex;flex-direction:column;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#EDE8DB;text-align:right;">
+      <div>A STONE MASS, HELD OFF THE GROUND</div>
+      <div>THE STAIR CLIMBS THROUGH FALLING WATER</div>
+      <div style="opacity:.6;">IMAGE SCALES SLOWLY ON SCROLL</div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 05 — DARK SEQUENCE: 004 / 005 / 006 ===== -->
+  <section data-screen-label="S05 Night Works" style="position:relative;background:#131210;color:#EDE8DB;padding:120px 0 130px;">
+    <div style="padding:0 48px;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:70px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#8A8072;">SCENE 05 &mdash; AFTER SUNDOWN&nbsp;&nbsp;004&ndash;006 / 009</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#8A8072;">THREE WORKS, ONE LIGHT</div>
+    </div>
+
+    <!-- 004 strata: full-bleed -->
+    <div style="position:relative;height:640px;">
+      <div style="position:absolute;inset:0;background:url('img/p3-strata.jpg') center/cover;"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,11,.8) 0%,rgba(14,13,11,0) 44%);"></div>
+      <div style="position:absolute;left:48px;bottom:44px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:76px;line-height:1;color:rgba(237,232,219,.3);">004</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:58px;line-height:1;margin:8px 0 0;color:#F2EFE7;">STRATA BUILDING</h3>
+      </div>
+      <div style="position:absolute;right:48px;bottom:52px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#CBC2B0;text-align:right;">COMMERCIAL &mdash; GLASS HELD BETWEEN PLANES</div>
+    </div>
+
+    <!-- 005 / 006 overlapping pair -->
+    <div style="position:relative;height:820px;margin-top:110px;">
+      <div style="position:absolute;left:48px;top:0;width:820px;height:540px;background:url('img/p6-ember.jpg') center/cover;"></div>
+      <div style="position:absolute;left:48px;top:556px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#8A8072;">005 &mdash; EMBER VILLA&nbsp;&nbsp;&middot;&nbsp;&nbsp;TIMBER FINS, LIT FROM WITHIN</div>
+      <div style="position:absolute;right:48px;top:300px;width:640px;height:460px;background:url('img/p8-fin.jpg') center/cover;box-shadow:0 30px 80px rgba(0,0,0,.5);"></div>
+      <div style="position:absolute;right:48px;top:776px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#8A8072;text-align:right;">006 &mdash; FIN HOUSE&nbsp;&nbsp;&middot;&nbsp;&nbsp;WHITE BLADES AGAINST BASALT</div>
+      <div style="position:absolute;left:930px;top:80px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:150px;line-height:1;color:rgba(237,232,219,.1);">005<br>006</div>
+    </div>
+
+    <p style="margin:110px 48px 0;max-width:700px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:29px;line-height:1.45;color:#B7AD9D;text-wrap:pretty;">At night the section reverses: the opening glows, and the mass disappears around it.</p>
+  </section>
+
+  <!-- ===== MANIFESTO ===== -->
+  <section data-screen-label="Manifesto" style="position:relative;background:#131210;color:#F2EFE7;padding:60px 48px 170px;overflow:hidden;border-bottom:1px solid rgba(237,232,219,.1);">
+    <div style="position:absolute;top:0;bottom:0;left:58%;width:1px;background:linear-gradient(to bottom,rgba(242,239,231,0),rgba(242,239,231,.5),rgba(242,239,231,0));"></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.3em;color:#8A8072;margin-bottom:64px;">MANIFESTO&nbsp;&nbsp;&middot;&nbsp;&nbsp;MASS / OPENING / LIGHT</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:98px;line-height:1.05;letter-spacing:-.01em;">
+      <div>THE MASS IS INHERITED.</div>
+      <div style="margin-left:200px;">THE OPENING IS DESIGNED.</div>
+      <div style="margin-left:100px;font-style:italic;font-weight:300;color:#A98D6B;">LIGHT CROSSES BETWEEN THEM.</div>
+    </div>
+    <div style="margin-top:76px;margin-left:200px;max-width:470px;font-size:15px;line-height:1.7;color:#9C9284;text-wrap:pretty;">A practice shaped by a country of stone walls and hard sun &mdash; where every room is a negotiation between shade and sea light.</div>
+  </section>
+
+  <!-- ===== SCENE 06 — TYPOLOGIES IN LIGHT: 007 / 008 ===== -->
+  <section data-screen-label="S06 Typologies" style="position:relative;background:#EDE8DB;padding:120px 0 130px;border-bottom:1px solid rgba(22,21,17,.16);">
+    <div style="padding:0 48px;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:64px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">SCENE 06 &mdash; RETURN TO DAY&nbsp;&nbsp;007&ndash;008 / 009</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">CITY / EXPERIMENT</div>
+    </div>
+
+    <!-- 007 urban aerial, edge-to-edge -->
+    <div style="position:relative;height:560px;">
+      <div style="position:absolute;inset:0;background:url('img/p7-prism.jpg') center/cover;"></div>
+      <div style="position:absolute;left:48px;bottom:-1px;background:#EDE8DB;padding:18px 26px 0 0;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:46px;line-height:1;">007 &mdash; PRISM MALL</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#6E6455;margin-top:10px;">COMMERCIAL &mdash; A CUT READ FROM THE STREET</div>
+      </div>
+    </div>
+
+    <!-- 008 experimental offset -->
+    <div style="position:relative;margin:110px 48px 0;display:grid;grid-template-columns:380px 1fr;gap:56px;align-items:end;">
+      <div style="padding-bottom:8px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:96px;line-height:1;color:rgba(22,21,17,.16);">008</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:56px;line-height:1.02;margin:16px 0 24px;">CURRENT<br>VILLA</h3>
+        <p style="font-size:14.5px;line-height:1.65;color:#4C4438;margin:0;text-wrap:pretty;">The one curve in the catalogue. Two poured ribbons carry the rooms; the garden holds the geometry still.</p>
+      </div>
+      <div style="position:relative;height:560px;">
+        <div style="position:absolute;inset:0;border:1px solid rgba(22,21,17,.35);transform:translate(16px,16px);pointer-events:none;"></div>
+        <div style="position:absolute;inset:0;background:url('img/p9-current.jpg') center/cover;"></div>
+        <div style="position:absolute;top:-1px;left:-1px;width:30px;height:30px;background:#EDE8DB;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 07 — CLOSE READING (interactive) ===== -->
+  <section data-screen-label="S07 Close Reading" style="position:relative;background:#E8E1D2;padding:120px 48px 60px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:64px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">SCENE 07 &mdash; CLOSE READING&nbsp;&nbsp;009 / 009</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">HOVER THE CROPS &mdash; THE PLATE CHANGES</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:300px 1fr 190px;gap:40px;align-items:stretch;">
+      <div style="display:flex;flex-direction:column;justify-content:space-between;padding-bottom:8px;">
+        <div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px;line-height:1.04;margin:0 0 26px;">FACET<br>KITCHEN</h2>
+          <p style="font-size:14.5px;line-height:1.7;color:#4C4438;margin:0;text-wrap:pretty;">An interior read at arm&rsquo;s length. Stone folded like paper, leather stretched flat, brass drawn into rings of light.</p>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#6E6455;display:flex;flex-direction:column;gap:6px;">
+          <div>TYPE&nbsp;&nbsp;&nbsp;&nbsp;INTERIOR</div>
+          <div>PLATE&nbsp;&nbsp;&nbsp;{{ detailLabel }}</div>
+        </div>
+      </div>
+
+      <div style="position:relative;height:620px;">
+        <div style="position:absolute;inset:0;background-image:{{ detailBg }};background-size:{{ detailSize }};background-position:{{ detailPos }};transition:background-position .4s;"></div>
+        <div style="position:absolute;left:0;bottom:0;background:rgba(242,239,231,.85);backdrop-filter:blur(3px);padding:14px 20px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#4C4438;">{{ detailCaption }}</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <sc-for list="{{ details }}" as="d" hint-placeholder-count="4">
+          <div onMouseEnter="{{ d.onEnter }}" style="position:relative;flex:1;cursor:pointer;">
+            <div style="position:absolute;inset:0;background-image:{{ d.bg }};background-size:{{ d.size }};background-position:{{ d.pos }};filter:saturate(.9);"></div>
+            <div style="position:absolute;inset:0;border:1px solid rgba(22,21,17,.0);transition:border-color .2s;" style-hover="border-color:#161511;"></div>
+            <div style="position:absolute;left:8px;bottom:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;color:#F2EFE7;text-shadow:0 1px 4px rgba(0,0,0,.6);">{{ d.num }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 07b — HORIZONTAL MATERIAL STRIP ===== -->
+  <section data-screen-label="S07b Material Strip" style="position:relative;background:#E8E1D2;padding:80px 0 130px;border-bottom:1px solid rgba(22,21,17,.16);">
+    <div style="padding:0 48px;display:flex;justify-content:space-between;align-items:center;margin-bottom:34px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">MATERIAL CORRIDOR &mdash; ONE HORIZONTAL MOMENT</div>
+      <div style="width:88px;height:44px;border-radius:22px;background:#161511;color:#F2EFE7;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;">DRAG</div>
+    </div>
+    <div style="overflow-x:auto;display:flex;gap:18px;padding:0 48px 20px;">
+      <sc-for list="{{ strip }}" as="s" hint-placeholder-count="6">
+        <div style="flex:0 0 auto;">
+          <div style="width:{{ s.w }}px;height:380px;background-image:{{ s.bg }};background-size:{{ s.size }};background-position:{{ s.pos }};"></div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#6E6455;margin-top:12px;">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 08 — ARCHIVE (interactive) ===== -->
+  <section data-screen-label="S08 Archive" style="position:relative;background:#F2EFE7;padding:120px 48px 130px;border-bottom:1px solid rgba(22,21,17,.16);overflow:hidden;">
+    <!-- ghost background of active project -->
+    <div style="position:absolute;inset:0;background-image:{{ archiveBg }};background-size:cover;background-position:center;opacity:.08;transition:opacity .3s;"></div>
+    <div style="position:relative;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:60px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">SCENE 08 &mdash; ARCHIVE&nbsp;&nbsp;&middot;&nbsp;&nbsp;009 WORKS</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;">HOVER &mdash; THE ROOM FILLS</div>
+    </div>
+
+    <div style="position:relative;display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:start;">
+      <div style="border-top:1px solid rgba(22,21,17,.3);">
+        <sc-for list="{{ archive }}" as="row" hint-placeholder-count="9">
+          <div onMouseEnter="{{ row.onEnter }}" style="display:grid;grid-template-columns:96px 1fr 170px 150px;align-items:baseline;padding:20px 14px;border-bottom:1px solid rgba(22,21,17,.3);cursor:pointer;transition:background .25s,color .25s;" style-hover="background:#161511;color:#F2EFE7;">
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:34px;line-height:1;">{{ row.index }}</div>
+            <div style="font-size:19px;font-weight:600;letter-spacing:.1em;">{{ row.name }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;opacity:.65;">{{ row.typology }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;opacity:.65;text-align:right;">VISUALISATION</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="position:sticky;top:110px;">
+        <img src="{{ activeSrc }}" alt="Archive preview" style="width:100%;height:280px;object-fit:cover;display:block;filter:saturate(.94);">
+        <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#6E6455;margin-top:18px;">
+          <span>{{ activeCode }}</span>
+          <span>{{ activeName }}</span>
+        </div>
+        <div style="margin-top:28px;border:1px solid rgba(22,21,17,.3);padding:14px 18px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#4C4438;display:flex;justify-content:space-between;">
+          <span>OPEN PROJECT</span><span>&rarr;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 09 — STUDIO / PROFILE ===== -->
+  <section data-screen-label="S09 Studio" style="position:relative;background:#EAE4D5;padding:130px 48px 140px;border-bottom:1px solid rgba(22,21,17,.16);overflow:hidden;">
+    <div style="position:relative;height:720px;">
+      <!-- architectural image behind -->
+      <div style="position:absolute;right:0;top:0;width:760px;height:640px;background:url('img/p2-aperture.jpg') center/cover;"></div>
+      <!-- translucent paper plane crossing it -->
+      <div style="position:absolute;right:560px;top:60px;width:520px;height:640px;background:rgba(242,239,231,.78);backdrop-filter:blur(3px);border:1px solid rgba(22,21,17,.2);"></div>
+
+      <div style="position:absolute;left:0;top:0;z-index:2;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.3em;color:#6E6455;margin-bottom:36px;">SCENE 09 &mdash; THE DESIGNER</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:120px;line-height:.92;margin:0;letter-spacing:-.012em;">ALI<br>YOUSSEF</h2>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;line-height:1.5;color:#4C4438;margin:44px 0 0;max-width:430px;text-wrap:pretty;">&ldquo;I was raised between stone that keeps the heat out and glass that lets the sea in. I design in that interval.&rdquo;</p>
+      </div>
+
+      <div style="position:absolute;left:0;bottom:0;z-index:2;display:flex;gap:56px;">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:#6E6455;border-bottom:1px solid rgba(22,21,17,.25);padding-bottom:9px;margin-bottom:14px;">DISCIPLINES</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;letter-spacing:.08em;color:#2E2A22;">
+            <div>ARCHITECTURE</div><div>INTERIOR ARCHITECTURE</div><div>SPATIAL DESIGN</div><div>SURFACE &amp; JOINERY</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.24em;color:#6E6455;border-bottom:1px solid rgba(22,21,17,.25);padding-bottom:9px;margin-bottom:14px;">PRACTICE</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#4C4438;">
+            <div>BASED&nbsp;&nbsp;&nbsp;LEBANON</div>
+            <div>CITY&nbsp;&nbsp;&nbsp;&nbsp;[ TO BE SUPPLIED ]</div>
+            <div>WORKS&nbsp;&nbsp;&nbsp;009 CATALOGUED</div>
+            <div>STATUS&nbsp;&nbsp;OPEN TO COMMISSIONS</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- portrait slot on the paper plane -->
+      <div style="position:absolute;right:600px;top:120px;width:300px;height:400px;z-index:2;background:repeating-linear-gradient(-45deg,#DFD8C7 0 10px,#E8E2D3 10px 20px);border:1px solid rgba(22,21,17,.25);display:flex;align-items:center;justify-content:center;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:#6E6455;background:#EAE4D5;padding:8px 14px;">PORTRAIT &mdash; TO BE SUPPLIED</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESPONSIVE SYSTEM FRAME ===== -->
+  <section data-screen-label="Responsive System" style="position:relative;background:#F2EFE7;padding:120px 48px 130px;border-bottom:1px solid rgba(22,21,17,.16);">
+    <div style="display:grid;grid-template-columns:1fr 340px 340px;gap:64px;align-items:center;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.26em;color:#6E6455;margin-bottom:34px;">THE SYSTEM, HELD IN ONE HAND</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:58px;line-height:1.05;margin:0 0 26px;">SAME MASS,<br>SMALLER OPENING.</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.6;color:#4C4438;max-width:380px;">
+          <div>&mdash;&nbsp;&nbsp;index becomes tap-driven, previews inline</div>
+          <div>&mdash;&nbsp;&nbsp;material corridor becomes a swipe strip</div>
+          <div>&mdash;&nbsp;&nbsp;sticky chapters collapse to title-then-images</div>
+          <div>&mdash;&nbsp;&nbsp;crops protect the architecture, never squeeze it</div>
+        </div>
+      </div>
+
+      <!-- mobile frame: arrival -->
+      <div style="border:1px solid rgba(22,21,17,.4);border-radius:28px;padding:10px;background:#161511;">
+        <div style="border-radius:20px;overflow:hidden;background:#F2EFE7;height:640px;position:relative;">
+          <div style="position:absolute;inset:0;background:url('img/p5-suspended.jpg') center/cover;"></div>
+          <div style="position:absolute;left:0;right:0;top:0;height:300px;background:linear-gradient(to bottom,rgba(242,239,231,.95) 40%,rgba(242,239,231,0));"></div>
+          <div style="position:absolute;left:18px;top:20px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.24em;color:#6E6455;margin-bottom:14px;">A&mdash;Y&nbsp;&nbsp;LEBANON</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:52px;line-height:.92;">ALI<br>YOUSSEF</div>
+            <div style="font-size:8.5px;letter-spacing:.16em;margin-top:12px;color:#2E2A22;">INTERIOR &middot; ARCHITECTURAL &middot; SPATIAL</div>
+          </div>
+          <div style="position:absolute;left:18px;bottom:18px;right:18px;background:rgba(17,16,13,.6);backdrop-filter:blur(2px);border:1px solid rgba(237,232,219,.3);padding:10px 12px;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.16em;color:#EDE8DB;">003 &mdash; SUSPENDED HOUSE&nbsp;&nbsp;&middot;&nbsp;&nbsp;SWIPE &rarr;</div>
+        </div>
+      </div>
+
+      <!-- mobile frame: archive -->
+      <div style="border:1px solid rgba(22,21,17,.4);border-radius:28px;padding:10px;background:#161511;">
+        <div style="border-radius:20px;overflow:hidden;background:#F2EFE7;height:640px;position:relative;padding:22px 18px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.24em;color:#6E6455;margin-bottom:18px;">ARCHIVE &mdash; TAP TO PREVIEW</div>
+          <div style="height:180px;background:url('img/p6-ember.jpg') center/cover;margin-bottom:8px;"></div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.18em;color:#6E6455;margin-bottom:14px;display:flex;justify-content:space-between;"><span>W&mdash;005</span><span>EMBER VILLA</span></div>
+          <div style="border-top:1px solid rgba(22,21,17,.3);">
+            <div style="display:flex;justify-content:space-between;padding:11px 2px;border-bottom:1px solid rgba(22,21,17,.2);font-size:11px;font-weight:600;letter-spacing:.08em;"><span>004&nbsp;&nbsp;STRATA BUILDING</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#6E6455;">COM</span></div>
+            <div style="display:flex;justify-content:space-between;padding:11px 2px;border-bottom:1px solid rgba(22,21,17,.2);background:#161511;color:#F2EFE7;font-size:11px;font-weight:600;letter-spacing:.08em;"><span style="padding-left:2px;">005&nbsp;&nbsp;EMBER VILLA</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;opacity:.7;padding-right:2px;">RES</span></div>
+            <div style="display:flex;justify-content:space-between;padding:11px 2px;border-bottom:1px solid rgba(22,21,17,.2);font-size:11px;font-weight:600;letter-spacing:.08em;"><span>006&nbsp;&nbsp;FIN HOUSE</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#6E6455;">RES</span></div>
+            <div style="display:flex;justify-content:space-between;padding:11px 2px;border-bottom:1px solid rgba(22,21,17,.2);font-size:11px;font-weight:600;letter-spacing:.08em;"><span>007&nbsp;&nbsp;PRISM MALL</span><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#6E6455;">COM</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING THRESHOLD ===== -->
+  <section data-screen-label="Closing" style="position:relative;background:#131210;color:#F2EFE7;padding:180px 48px 60px;overflow:hidden;">
+    <div style="position:absolute;right:0;top:0;bottom:0;width:420px;background:url('img/p1-veiled-stone.jpg') center/cover;opacity:.35;"></div>
+    <div style="position:absolute;right:420px;top:0;bottom:0;width:1px;background:rgba(237,232,219,.3);"></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.3em;color:#8A8072;margin-bottom:60px;">END OF SEQUENCE&nbsp;&nbsp;009 / 009</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:110px;line-height:1.04;letter-spacing:-.012em;">
+      <div>BETWEEN MOUNTAIN</div>
+      <div style="margin-left:160px;">AND SEA,</div>
+      <div style="margin-left:80px;font-style:italic;color:#A98D6B;">EVERY WALL WAITS.</div>
+    </div>
+    <div style="margin:90px 0 130px;display:flex;gap:64px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:#9C9284;">
+      <div>COMMISSIONS&nbsp;&nbsp;[ EMAIL &mdash; TO BE SUPPLIED ]</div>
+      <div>PORTFOLIO PDF&nbsp;&nbsp;ON REQUEST</div>
+      <div>LEBANON</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(237,232,219,.18);padding-top:26px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:#8A8072;position:relative;">
+      <span>&copy; MMXXVI &mdash; ALI YOUSSEF</span>
+      <span>MASS / OPENING / LIGHT</span>
+      <span>MADE AS ARCHITECTURE, NOT A PAGE</span>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;menuOpen&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;States&quot; }
+}">
+class Component extends DCLogic {
+  state = { active: 0, menuActive: 0, detail: 0, menuOpenState: null };
+
+  works() {
+    return [
+      { index: "001", code: "W\u2014001", name: "VEILED STONE HOUSE", typology: "RESIDENTIAL", src: "img/p1-veiled-stone.jpg" },
+      { index: "002", code: "W\u2014002", name: "APERTURE HOUSE", typology: "RESIDENTIAL", src: "img/p2-aperture.jpg" },
+      { index: "003", code: "W\u2014003", name: "SUSPENDED HOUSE", typology: "RESIDENTIAL", src: "img/p5-suspended.jpg" },
+      { index: "004", code: "W\u2014004", name: "STRATA BUILDING", typology: "COMMERCIAL", src: "img/p3-strata.jpg" },
+      { index: "005", code: "W\u2014005", name: "EMBER VILLA", typology: "RESIDENTIAL", src: "img/p6-ember.jpg" },
+      { index: "006", code: "W\u2014006", name: "FIN HOUSE", typology: "RESIDENTIAL", src: "img/p8-fin.jpg" },
+      { index: "007", code: "W\u2014007", name: "PRISM MALL", typology: "COMMERCIAL", src: "img/p7-prism.jpg" },
+      { index: "008", code: "W\u2014008", name: "CURRENT VILLA", typology: "SPATIAL STUDY", src: "img/p9-current.jpg" },
+      { index: "009", code: "W\u2014009", name: "FACET KITCHEN", typology: "INTERIOR", src: "img/p4-facet.jpg" }
+    ];
+  }
+
+  details() {
+    return [
+      { num: "D\u201401", label: "CUT STONE", caption: "D\u201401 \u2014 THE FOLDED ISLAND", bg: "url('img/p4-facet.jpg')", size: "180%", pos: "60% 75%" },
+      { num: "D\u201402", label: "SADDLE LEATHER", caption: "D\u201402 \u2014 LEATHER SCREEN, STITCHED", bg: "url('img/p4-facet.jpg')", size: "260%", pos: "92% 30%" },
+      { num: "D\u201403", label: "BRASS LIGHT", caption: "D\u201403 \u2014 RINGS OF BRASS LIGHT", bg: "url('img/p4-facet.jpg')", size: "300%", pos: "78% 6%" },
+      { num: "D\u201404", label: "GARDEN GLASS", caption: "D\u201404 \u2014 GLASS TO THE GARDEN", bg: "url('img/p4-facet.jpg')", size: "260%", pos: "4% 40%" }
+    ];
+  }
+
+  renderVals() {
+    const works = this.works();
+    const details = this.details();
+    const active = works[this.state.active] || works[0];
+    const menuActive = works[this.state.menuActive] || works[0];
+    const d = details[this.state.detail] || details[0];
+    const menuOpen = this.state.menuOpenState ?? (this.props.menuOpen ?? false);
+
+    return {
+      menuOpen,
+      openMenu: () => this.setState({ menuOpenState: true }),
+      closeMenu: () => this.setState({ menuOpenState: false }),
+      navProgress: "001 / 009",
+
+      menuWorks: works.map((w, i) => ({
+        index: w.index, name: w.name, typology: w.typology,
+        onEnter: () => this.setState({ menuActive: i })
+      })),
+      menuSrc: menuActive.src,
+      menuCode: menuActive.code,
+      menuName: menuActive.name,
+
+      details: details.map((x, i) => ({
+        num: x.num, bg: x.bg, size: x.size, pos: x.pos,
+        onEnter: () => this.setState({ detail: i })
+      })),
+      detailBg: d.bg,
+      detailSize: d.size,
+      detailPos: d.pos,
+      detailLabel: d.label,
+      detailCaption: d.caption,
+
+      strip: [
+        { w: 520, bg: "url('img/p1-veiled-stone.jpg')", size: "300%", pos: "30% 20%", label: "S\u201401 \u2014 MARBLE INLAY, LIT" },
+        { w: 340, bg: "url('img/p6-ember.jpg')", size: "300%", pos: "20% 40%", label: "S\u201402 \u2014 TIMBER FINS" },
+        { w: 420, bg: "url('img/p5-suspended.jpg')", size: "260%", pos: "70% 40%", label: "S\u201403 \u2014 WATER THROUGH GLASS" },
+        { w: 340, bg: "url('img/p8-fin.jpg')", size: "300%", pos: "12% 50%", label: "S\u201404 \u2014 WHITE BLADES" },
+        { w: 420, bg: "url('img/p7-prism.jpg')", size: "260%", pos: "78% 30%", label: "S\u201405 \u2014 BRASS LATTICE ROOF" },
+        { w: 340, bg: "url('img/p2-aperture.jpg')", size: "320%", pos: "40% 70%", label: "S\u201406 \u2014 BOARD-FORMED CONCRETE" },
+        { w: 420, bg: "url('img/p9-current.jpg')", size: "260%", pos: "40% 45%", label: "S\u201407 \u2014 POURED RIBBON" }
+      ],
+
+      archive: works.map((w, i) => ({
+        index: w.index, name: w.name, typology: w.typology,
+        onEnter: () => this.setState({ active: i })
+      })),
+      archiveBg: "url('" + active.src + "')",
+      activeSrc: active.src,
+      activeCode: active.code,
+      activeName: active.name
+    };
+  }
+}
+</script>
+</body>
+</html>

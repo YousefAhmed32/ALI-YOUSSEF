@@ -1,0 +1,28 @@
+.work-index-header {
+  background: var(--ivory-0);
+  padding: clamp(120px, 18vh, 180px) var(--gutter) clamp(60px, 8vh, 90px);
+}
+
+.work-index-header__label {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--ink-3);
+  margin-bottom: 30px;
+}
+
+.work-index-header__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 96px);
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.012em;
+}
+
+.work-index-header__intro {
+  max-width: 560px;
+  margin: 34px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}

@@ -1,0 +1,145 @@
+.veiled-chapter {
+  position: relative;
+  background: var(--black-2);
+  color: var(--ivory-1);
+  display: grid;
+  grid-template-columns: minmax(280px, 480px) 1fr;
+}
+
+.veiled-chapter__rail {
+  position: relative;
+}
+
+.veiled-chapter__rail-sticky {
+  position: sticky;
+  top: 110px;
+  padding: 96px 48px 96px var(--gutter);
+}
+
+.veiled-chapter__scene-label {
+  font-size: 11px;
+  color: var(--paper-5);
+  margin-bottom: 36px;
+}
+
+.veiled-chapter__ghost {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(70px, 9vw, 120px);
+  line-height: 1;
+  color: rgba(237, 232, 219, 0.16);
+}
+
+.veiled-chapter__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1;
+  margin: 22px 0 30px;
+  color: var(--ivory-0);
+}
+
+.veiled-chapter__intent {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--paper-4);
+  margin: 0 0 40px;
+  max-width: 300px;
+}
+
+.veiled-chapter__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--paper-5);
+}
+
+.veiled-chapter__meta .is-muted {
+  opacity: 0.6;
+}
+
+.veiled-chapter__cta {
+  margin-top: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--bronze-light);
+  transition: gap 0.25s ease;
+}
+
+.veiled-chapter__cta:hover {
+  gap: 18px;
+}
+
+.veiled-chapter__cta-badge {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--bronze);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.veiled-chapter__images {
+  display: flex;
+  flex-direction: column;
+}
+
+.veiled-chapter__main,
+.veiled-chapter__pair-item,
+.veiled-chapter__final {
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.veiled-chapter__main {
+  height: clamp(320px, 55vh, 760px);
+  background-position: center;
+  background-size: cover;
+}
+
+.veiled-chapter__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.veiled-chapter__pair-item {
+  height: clamp(220px, 34vh, 470px);
+}
+
+.veiled-chapter__final {
+  position: relative;
+  height: clamp(260px, 40vh, 560px);
+}
+
+.veiled-chapter__final-caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(27, 23, 18, 0.78);
+  backdrop-filter: blur(2px);
+  padding: 16px 22px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--paper-2);
+}
+
+@media (max-width: 860px) {
+  .veiled-chapter {
+    grid-template-columns: 1fr;
+  }
+  .veiled-chapter__rail-sticky {
+    position: static;
+    padding: 64px var(--gutter) 40px;
+  }
+  .veiled-chapter__intent {
+    max-width: none;
+  }
+}
