@@ -8,10 +8,8 @@ export const contact = {
     normalizedNumber: '9613737783',
     message: 'Hello Ali, I discovered your portfolio and would like to discuss an interior design project.',
   },
-  // No real Instagram URL has been supplied yet — leave empty rather than
-  // invent one. Components must treat '' as "omit the link".
-  instagram: '',
-  email: site.email,
+  instagram: 'https://www.instagram.com/aly.ussef',
+  instagramHandle: '@aly.ussef',
   based: site.based,
 };
 

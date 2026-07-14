@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { site, navigation } from '../../data/site.js';
+import { RESUME_URL, RESUME_FILE_NAME } from '../../data/resume.js';
 import { useSectionTheme } from '../../hooks/useSectionTheme.js';
 import { MagneticLink } from '../interaction/MagneticLink.jsx';
 import { LogoMark } from '../brand/LogoMark.jsx';
+import { DownloadIcon } from '../brand/DownloadIcon.jsx';
 import './site-header.css';
 
 export function SiteHeader({ onOpenMenu, menuOpen, menuTriggerRef }) {
@@ -51,6 +53,19 @@ export function SiteHeader({ onOpenMenu, menuOpen, menuTriggerRef }) {
             </span>
           </MagneticLink>
         ))}
+        <MagneticLink
+          as="a"
+          href={RESUME_URL}
+          download={RESUME_FILE_NAME}
+          target="_blank"
+          rel="noopener noreferrer"
+          strength={6}
+          className="site-header__cv type-mono"
+          aria-label="Download CV — opens as a PDF in a new tab"
+        >
+          <DownloadIcon size={11} className="site-header__cv-icon" />
+          <span>CV</span>
+        </MagneticLink>
         <button
           type="button"
           ref={menuTriggerRef}

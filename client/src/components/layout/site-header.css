@@ -72,6 +72,31 @@
   padding-bottom: 2px;
 }
 
+.site-header__cv {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  opacity: 0.6;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.site-header__cv:hover,
+.site-header__cv:focus-visible {
+  opacity: 1;
+  border-bottom-color: currentColor;
+}
+
+.site-header__cv-icon {
+  transition: transform 0.3s var(--ease-soft);
+}
+
+.site-header__cv:hover .site-header__cv-icon,
+.site-header__cv:focus-visible .site-header__cv-icon {
+  transform: translateY(2px);
+}
+
 .site-header__menu-trigger {
   font-size: 11px;
   letter-spacing: 0.22em;
@@ -89,7 +114,8 @@
   .site-header__nav {
     gap: 14px;
   }
-  .site-header__link {
+  .site-header__link,
+  .site-header__cv {
     display: none;
   }
 }

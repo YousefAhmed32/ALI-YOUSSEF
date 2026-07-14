@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { getProjectBySlug } from '../../data/projects.js';
 import { site } from '../../data/site.js';
+import { contact } from '../../data/contact.js';
 import { SplitTextReveal } from '../typography/SplitTextReveal.jsx';
 import { MagneticLink } from '../interaction/MagneticLink.jsx';
 import { LogoMark } from '../brand/LogoMark.jsx';
@@ -35,7 +36,7 @@ export function ClosingSection() {
       </div>
 
       <div className="type-mono closing__meta">
-        <span>COMMISSIONS&nbsp;&nbsp;[ EMAIL — {site.email} ]</span>
+        <span>COMMISSIONS&nbsp;&nbsp;[ WHATSAPP — {contact.whatsapp.displayNumber} ]</span>
         <span>PORTFOLIO PDF&nbsp;&nbsp;ON REQUEST</span>
         <span>{site.based}</span>
       </div>

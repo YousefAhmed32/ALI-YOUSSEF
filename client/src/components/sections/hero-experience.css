@@ -70,22 +70,106 @@
   will-change: transform;
 }
 
-.hero__disciplines {
+.hero__intro {
   position: absolute;
   left: var(--gutter);
   top: calc(clamp(120px, 18vh, 160px) + clamp(150px, 22vw, 300px));
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  font-size: 14px;
-  letter-spacing: 0.15em;
+  gap: clamp(28px, 4vh, 40px);
+}
+
+.hero__disciplines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+  letter-spacing: 0.18em;
   font-weight: 500;
   color: var(--ink-0);
 }
 
+.hero__disciplines > div {
+  position: relative;
+  padding-left: 26px;
+}
+
+.hero__disciplines > div::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
 .hero__disciplines .is-accent {
   color: var(--bronze-ink);
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  padding: 15px 22px;
+  border: 1px solid transparent;
+  transition: background 0.3s var(--ease-soft), color 0.3s var(--ease-soft),
+    border-color 0.3s var(--ease-soft), transform 0.3s var(--ease-soft);
+}
+
+.hero__cta:active {
+  transform: scale(0.97);
+}
+
+.hero__cta-icon {
+  transition: transform 0.3s var(--ease-soft);
+}
+
+.hero__cta--primary {
+  background: var(--ink-0);
+  color: var(--ivory-0);
+  border-color: var(--ink-0);
+}
+
+.hero__cta--primary:hover,
+.hero__cta--primary:focus-visible {
+  background: var(--bronze-ink);
+  border-color: var(--bronze-ink);
+}
+
+.hero__cta--primary:hover .hero__cta-icon,
+.hero__cta--primary:focus-visible .hero__cta-icon {
+  transform: translateX(4px);
+}
+
+.hero__cta--secondary {
+  background: transparent;
+  color: var(--ink-0);
+  border-color: rgba(22, 21, 17, 0.32);
+}
+
+.hero__cta--secondary:hover,
+.hero__cta--secondary:focus-visible {
+  border-color: var(--ink-0);
+  background: rgba(22, 21, 17, 0.04);
+}
+
+.hero__cta--secondary:hover .hero__cta-icon,
+.hero__cta--secondary:focus-visible .hero__cta-icon {
+  transform: translateY(3px);
 }
 
 .hero__metadata {
@@ -159,10 +243,29 @@
   .hero__title-line--youssef {
     margin-left: 8vw;
   }
-  .hero__disciplines {
+  .hero__intro {
     top: auto;
-    bottom: 190px;
-    font-size: 11px;
+    bottom: 236px;
+    gap: 18px;
+  }
+  .hero__disciplines {
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .hero__disciplines > div {
+    padding-left: 20px;
+  }
+
+  .hero__disciplines > div::before {
+    width: 12px;
+  }
+  .hero__actions {
+    gap: 10px;
+  }
+  .hero__cta {
+    padding: 13px 18px;
+    font-size: 10px;
   }
   .hero__metadata {
     left: var(--gutter);
@@ -175,5 +278,16 @@
   }
   .hero__scroll-cue {
     display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero__intro {
+    bottom: 250px;
+  }
+  .hero__cta {
+    padding: 12px 16px;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
   }
 }

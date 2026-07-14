@@ -1,13 +1,12 @@
 export const site = {
   name: 'ALI YOUSSEF',
-  disciplines: ['INTERIOR DESIGNER', 'ARCHITECTURAL DESIGNER', 'SPATIAL DESIGNER'],
+  disciplines: ['INTERIOR DESIGNER', 'SPATIAL DESIGNER'],
   based: 'LEBANON',
   city: 'TO BE SUPPLIED',
   quote:
     'I was raised between stone that keeps the heat out and glass that lets the sea in. I design in that interval.',
   disciplineList: ['ARCHITECTURE', 'INTERIOR ARCHITECTURE', 'SPATIAL DESIGN', 'SURFACE & JOINERY'],
   status: 'OPEN TO COMMISSIONS',
-  email: 'TO BE SUPPLIED',
   manifesto: [
     { text: 'THE MASS IS INHERITED.' },
     { text: 'THE OPENING IS DESIGNED.', indent: 1 },

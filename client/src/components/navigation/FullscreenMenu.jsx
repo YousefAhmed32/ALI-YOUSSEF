@@ -3,8 +3,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { projects } from '../../data/projects.js';
 import { site, navigation } from '../../data/site.js';
+import { contact } from '../../data/contact.js';
+import { RESUME_URL, RESUME_FILE_NAME } from '../../data/resume.js';
 import { useReducedMotion } from '../../hooks/useReducedMotion.js';
 import { LogoMark } from '../brand/LogoMark.jsx';
+import { DownloadIcon } from '../brand/DownloadIcon.jsx';
 import './fullscreen-menu.css';
 
 const FOCUSABLE = 'a[href], button:not([disabled])';
@@ -89,6 +92,23 @@ export function FullscreenMenu({ open, onClose, triggerRef }) {
                   </Link>
                 </motion.div>
               ))}
+              <motion.div
+                initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: reducedMotion ? 0 : 0.1 + navigation.length * 0.05, duration: 0.5 }}
+              >
+                <a
+                  href={RESUME_URL}
+                  download={RESUME_FILE_NAME}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fullscreen-menu__nav-link fullscreen-menu__nav-link--cv"
+                  aria-label="Download CV — opens as a PDF in a new tab"
+                >
+                  <span>DOWNLOAD CV</span>
+                  <DownloadIcon size={18} className="fullscreen-menu__nav-link-icon" />
+                </a>
+              </motion.div>
               <div className="fullscreen-menu__divider" />
               {projects.map((p, i) => (
                 <motion.div
@@ -117,7 +137,17 @@ export function FullscreenMenu({ open, onClose, triggerRef }) {
           </div>
 
           <div className="fullscreen-menu__footer type-mono">
-            BASED IN {site.based} &middot; MASS / OPENING / LIGHT
+            <span>BASED IN {site.based} &middot; MASS / OPENING / LIGHT</span>
+            {contact.instagram ? (
+              <a
+                href={contact.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fullscreen-menu__social"
+              >
+                INSTAGRAM
+              </a>
+            ) : null}
           </div>
         </motion.div>
       ) : null}

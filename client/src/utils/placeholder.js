@@ -1,4 +1,4 @@
-// Some studio facts (exact project addresses, a public email) genuinely have
+// Some studio facts (exact project addresses, a city name) genuinely have
 // not been supplied yet. Rather than invent them, data files mark them with
 // these sentinel strings — components use isUnset() to omit that one field
 // gracefully instead of rendering the raw placeholder as visible copy.

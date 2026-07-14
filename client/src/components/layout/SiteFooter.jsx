@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { site } from '../../data/site.js';
 import { contact, getWhatsAppUrl } from '../../data/contact.js';
+import { RESUME_URL, RESUME_FILE_NAME } from '../../data/resume.js';
 import './site-footer.css';
 
 const ROMAN_NUMERALS = [
@@ -45,6 +46,16 @@ export function SiteFooter() {
           <Link to="/contact" className="site-footer__link">
             {site.based}
           </Link>
+          <a
+            href={RESUME_URL}
+            download={RESUME_FILE_NAME}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="site-footer__link"
+            aria-label="Download portfolio CV — opens as a PDF in a new tab"
+          >
+            DOWNLOAD PORTFOLIO CV
+          </a>
         </nav>
       </div>
 

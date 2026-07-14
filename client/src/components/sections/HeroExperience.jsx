@@ -1,8 +1,12 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { projects } from '../../data/projects.js';
 import { site } from '../../data/site.js';
+import { RESUME_URL, RESUME_FILE_NAME } from '../../data/resume.js';
 import { LetterType } from '../typography/LetterType.jsx';
+import { DownloadIcon } from '../brand/DownloadIcon.jsx';
+import { MagneticLink } from '../interaction/MagneticLink.jsx';
 import { useGSAPContext } from '../../hooks/useGSAPContext.js';
 import { useReducedMotion } from '../../hooks/useReducedMotion.js';
 import { useMediaQuery } from '../../hooks/useMediaQuery.js';
@@ -51,7 +55,7 @@ export function HeroExperience() {
         '-=0.5'
       )
       .fromTo(
-        root.querySelector('.hero__metadata'),
+        [root.querySelector('.hero__metadata'), root.querySelector('.hero__actions')],
         { opacity: 0, y: 12 },
         { opacity: 1, y: 0, duration: 0.7 },
         '-=0.3'
@@ -86,12 +90,34 @@ export function HeroExperience() {
         </div>
       </h1>
 
-      <div className="hero__disciplines">
-        {site.disciplines.map((d, i) => (
-          <div key={d} className={i === 1 ? 'is-accent' : ''}>
-            {d}
-          </div>
-        ))}
+      <div className="hero__intro">
+        <div className="hero__disciplines">
+          {site.disciplines.map((d, i) => (
+            <div key={d} className={i === 1 ? 'is-accent' : ''}>
+              {d}
+            </div>
+          ))}
+        </div>
+
+        <div className="hero__actions">
+          <MagneticLink as={Link} to="/work" strength={8} className="hero__cta hero__cta--primary type-mono">
+            <span>VIEW THE WORK</span>
+            <span className="hero__cta-icon" aria-hidden="true">→</span>
+          </MagneticLink>
+          <MagneticLink
+            as="a"
+            href={RESUME_URL}
+            download={RESUME_FILE_NAME}
+            target="_blank"
+            rel="noopener noreferrer"
+            strength={8}
+            className="hero__cta hero__cta--secondary type-mono"
+            aria-label="Download Ali Youssef's CV as a PDF — opens in a new tab"
+          >
+            <span>DOWNLOAD CV</span>
+            <DownloadIcon size={13} className="hero__cta-icon" />
+          </MagneticLink>
+        </div>
       </div>
 
       <div className="hero__metadata type-mono">

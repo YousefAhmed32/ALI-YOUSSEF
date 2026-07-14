@@ -2,7 +2,6 @@ import { RouteTransition } from '../components/layout/RouteTransition.jsx';
 import { SplitTextReveal } from '../components/typography/SplitTextReveal.jsx';
 import { site } from '../data/site.js';
 import { contact, getWhatsAppUrl } from '../data/contact.js';
-import { isUnset } from '../utils/placeholder.js';
 import './contact-page.css';
 
 export function ContactPage() {
@@ -45,10 +44,10 @@ export function ContactPage() {
             <dt className="type-mono">WHATSAPP</dt>
             <dd>{contact.whatsapp.displayNumber}</dd>
           </div>
-          {!isUnset(contact.email) ? (
+          {contact.instagram ? (
             <div>
-              <dt className="type-mono">EMAIL</dt>
-              <dd>{contact.email}</dd>
+              <dt className="type-mono">INSTAGRAM</dt>
+              <dd>{contact.instagramHandle}</dd>
             </div>
           ) : null}
           <div>
@@ -60,13 +59,6 @@ export function ContactPage() {
             <dd>{site.status}</dd>
           </div>
         </dl>
-
-        {isUnset(contact.email) ? (
-          <p className="contact-page__note">
-            WhatsApp is the fastest way to reach the studio directly — email will be published
-            here once set up.
-          </p>
-        ) : null}
       </section>
     </RouteTransition>
   );

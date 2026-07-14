@@ -89,10 +89,3 @@
   font-size: 17px;
   color: var(--ivory-1);
 }
-
-.contact-page__note {
-  max-width: 480px;
-  font-size: 13.5px;
-  line-height: 1.7;
-  color: var(--paper-5);
-}
