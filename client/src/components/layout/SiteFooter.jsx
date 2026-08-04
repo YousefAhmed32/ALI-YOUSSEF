@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { site } from '../../data/site.js';
 import { contact, getWhatsAppUrl } from '../../data/contact.js';
-import { RESUME_URL, RESUME_FILE_NAME } from '../../data/resume.js';
+import { RESUME_URL, RESUME_FILE_NAME, CV_DOWNLOAD_ENABLED } from '../../data/resume.js';
 import './site-footer.css';
 
 const ROMAN_NUMERALS = [
@@ -47,14 +47,17 @@ export function SiteFooter() {
             {site.based}
           </Link>
           <a
-            href={RESUME_URL}
-            download={RESUME_FILE_NAME}
+            href={CV_DOWNLOAD_ENABLED ? RESUME_URL : undefined}
+            download={CV_DOWNLOAD_ENABLED ? RESUME_FILE_NAME : undefined}
             target="_blank"
             rel="noopener noreferrer"
             className="site-footer__link"
-            aria-label="Download portfolio CV — opens as a PDF in a new tab"
+            aria-label={CV_DOWNLOAD_ENABLED ? 'Download portfolio CV — opens as a PDF in a new tab' : 'CV updating — download temporarily unavailable'}
+            aria-disabled={!CV_DOWNLOAD_ENABLED}
+            onClick={(e) => { if (!CV_DOWNLOAD_ENABLED) e.preventDefault(); }}
+            style={!CV_DOWNLOAD_ENABLED ? { opacity: 0.5, cursor: 'not-allowed', pointerEvents: 'none' } : undefined}
           >
-            DOWNLOAD PORTFOLIO CV
+            {CV_DOWNLOAD_ENABLED ? 'DOWNLOAD PORTFOLIO CV' : 'CV Updating...'}
           </a>
         </nav>
       </div>

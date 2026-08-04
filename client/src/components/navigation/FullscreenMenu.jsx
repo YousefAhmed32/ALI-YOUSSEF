@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { projects } from '../../data/projects.js';
 import { site, navigation } from '../../data/site.js';
 import { contact } from '../../data/contact.js';
-import { RESUME_URL, RESUME_FILE_NAME } from '../../data/resume.js';
+import { RESUME_URL, RESUME_FILE_NAME, CV_DOWNLOAD_ENABLED } from '../../data/resume.js';
 import { useReducedMotion } from '../../hooks/useReducedMotion.js';
 import { LogoMark } from '../brand/LogoMark.jsx';
 import { DownloadIcon } from '../brand/DownloadIcon.jsx';
@@ -98,14 +98,17 @@ export function FullscreenMenu({ open, onClose, triggerRef }) {
                 transition={{ delay: reducedMotion ? 0 : 0.1 + navigation.length * 0.05, duration: 0.5 }}
               >
                 <a
-                  href={RESUME_URL}
-                  download={RESUME_FILE_NAME}
+                  href={CV_DOWNLOAD_ENABLED ? RESUME_URL : undefined}
+                  download={CV_DOWNLOAD_ENABLED ? RESUME_FILE_NAME : undefined}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="fullscreen-menu__nav-link fullscreen-menu__nav-link--cv"
-                  aria-label="Download CV — opens as a PDF in a new tab"
+                  aria-label={CV_DOWNLOAD_ENABLED ? 'Download CV — opens as a PDF in a new tab' : 'CV updating — download temporarily unavailable'}
+                  aria-disabled={!CV_DOWNLOAD_ENABLED}
+                  onClick={(e) => { if (!CV_DOWNLOAD_ENABLED) e.preventDefault(); }}
+                  style={!CV_DOWNLOAD_ENABLED ? { opacity: 0.5, cursor: 'not-allowed', pointerEvents: 'none' } : undefined}
                 >
-                  <span>DOWNLOAD CV</span>
+                  <span>{CV_DOWNLOAD_ENABLED ? 'DOWNLOAD CV' : 'CV Updating...'}</span>
                   <DownloadIcon size={18} className="fullscreen-menu__nav-link-icon" />
                 </a>
               </motion.div>

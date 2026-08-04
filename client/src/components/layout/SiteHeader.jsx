@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { site, navigation } from '../../data/site.js';
-import { RESUME_URL, RESUME_FILE_NAME } from '../../data/resume.js';
+import { RESUME_URL, RESUME_FILE_NAME, CV_DOWNLOAD_ENABLED } from '../../data/resume.js';
 import { useSectionTheme } from '../../hooks/useSectionTheme.js';
 import { MagneticLink } from '../interaction/MagneticLink.jsx';
 import { LogoMark } from '../brand/LogoMark.jsx';
@@ -55,16 +55,19 @@ export function SiteHeader({ onOpenMenu, menuOpen, menuTriggerRef }) {
         ))}
         <MagneticLink
           as="a"
-          href={RESUME_URL}
-          download={RESUME_FILE_NAME}
+          href={CV_DOWNLOAD_ENABLED ? RESUME_URL : undefined}
+          download={CV_DOWNLOAD_ENABLED ? RESUME_FILE_NAME : undefined}
           target="_blank"
           rel="noopener noreferrer"
           strength={6}
           className="site-header__cv type-mono"
-          aria-label="Download CV — opens as a PDF in a new tab"
+          aria-label={CV_DOWNLOAD_ENABLED ? 'Download CV — opens as a PDF in a new tab' : 'CV updating — download temporarily unavailable'}
+          aria-disabled={!CV_DOWNLOAD_ENABLED}
+          onClick={(e) => { if (!CV_DOWNLOAD_ENABLED) e.preventDefault(); }}
+          style={!CV_DOWNLOAD_ENABLED ? { opacity: 0.5, cursor: 'not-allowed', pointerEvents: 'none' } : undefined}
         >
           <DownloadIcon size={11} className="site-header__cv-icon" />
-          <span>CV</span>
+          <span>{CV_DOWNLOAD_ENABLED ? 'CV' : 'CV Updating...'}</span>
         </MagneticLink>
         <button
           type="button"
