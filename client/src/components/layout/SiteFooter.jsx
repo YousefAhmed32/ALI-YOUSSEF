@@ -25,9 +25,7 @@ function toRoman(num) {
 const CURRENT_YEAR_ROMAN = toRoman(new Date().getFullYear());
 
 const DEVELOPER_NAME = 'YANSY TECH';
-const DEVELOPER_WHATSAPP_URL = `https://wa.me/201090385390?text=${encodeURIComponent(
-  `Hello ${DEVELOPER_NAME},\nI found your work through this website and I'd like to discuss building a website for my business.`
-)}`;
+const DEVELOPER_SITE_URL = 'https://yansytech.com/';
 
 export function SiteFooter() {
   return (
@@ -67,11 +65,11 @@ export function SiteFooter() {
       <p className="site-footer__credit">
         Designed &amp; Developed by{' '}
         <a
-          href={DEVELOPER_WHATSAPP_URL}
+          href={DEVELOPER_SITE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="site-footer__credit-link"
-          aria-label={`Contact ${DEVELOPER_NAME} on WhatsApp — opens in a new tab`}
+          aria-label={`Visit ${DEVELOPER_NAME} website — opens in a new tab`}
         >
           {DEVELOPER_NAME}
         </a>
