@@ -97,6 +97,20 @@ export function FullscreenMenu({ open, onClose, triggerRef }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: reducedMotion ? 0 : 0.1 + navigation.length * 0.05, duration: 0.5 }}
               >
+                <Link
+                  to="/ai-studio"
+                  className="fullscreen-menu__nav-link"
+                  onClick={onClose}
+                  style={{ color: 'var(--bronze)' }}
+                >
+                  AI STUDIO ✦
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: reducedMotion ? 0 : 0.1 + navigation.length * 0.05, duration: 0.5 }}
+              >
                 <a
                   href={CV_DOWNLOAD_ENABLED ? RESUME_URL : undefined}
                   download={CV_DOWNLOAD_ENABLED ? RESUME_FILE_NAME : undefined}

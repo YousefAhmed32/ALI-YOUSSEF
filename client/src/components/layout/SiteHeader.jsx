@@ -53,6 +53,15 @@ export function SiteHeader({ onOpenMenu, menuOpen, menuTriggerRef }) {
             </span>
           </MagneticLink>
         ))}
+        <MagneticLink as={Link} to="/ai-studio" strength={6} className="site-header__link site-header__ai-link">
+          <span
+            className={location.pathname.startsWith('/ai-studio') ? 'is-active' : ''}
+            data-label="AI STUDIO ✦"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+          >
+            AI STUDIO <span style={{ fontSize: '9px', color: 'var(--bronze)', fontWeight: 700 }}>✦</span>
+          </span>
+        </MagneticLink>
         <MagneticLink
           as="a"
           href={CV_DOWNLOAD_ENABLED ? RESUME_URL : undefined}

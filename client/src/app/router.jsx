@@ -8,10 +8,30 @@ const ProjectPage = lazy(() => import('../pages/ProjectPage.jsx').then((m) => ({
 const StudioPage = lazy(() => import('../pages/StudioPage.jsx').then((m) => ({ default: m.StudioPage })));
 const ContactPage = lazy(() => import('../pages/ContactPage.jsx').then((m) => ({ default: m.ContactPage })));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage.jsx').then((m) => ({ default: m.NotFoundPage })));
+const AiStudioPage = lazy(() => import('../pages/AiStudioPage.jsx').then((m) => ({ default: m.AiStudioPage })));
 
 export function AppRouter() {
   return (
     <Routes>
+      {/* Standalone AI Studio Experience */}
+      <Route
+        path="/ai-studio"
+        element={
+          <Suspense fallback={null}>
+            <AiStudioPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/ai"
+        element={
+          <Suspense fallback={null}>
+            <AiStudioPage />
+          </Suspense>
+        }
+      />
+
+      {/* Primary Architectural Portfolio Layout */}
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route
