@@ -78,18 +78,33 @@ function MediaModal({ item, onClose }) {
       </button>
       <div className={`ai-modal__content ${isFilm ? 'is-film' : 'is-image'}`} onClick={(event) => event.stopPropagation()}>
         {isFilm ? (
-          <iframe
-            src={item.videoUrl}
-            title={item.title}
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowFullScreen
-          />
+          <div className="ai-modal__player-frame">
+            <iframe
+              src={item.videoUrl}
+              title={item.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
         ) : (
-          <img src={item.image} alt={item.alt} />
+          <img src={item.image} alt={item.alt} decoding="async" />
         )}
         <div className="ai-modal__caption">
-          <span>{item.category}</span>
-          <strong>{item.title}</strong>
+          <div className="ai-modal__caption-info">
+            <span>{item.category}</span>
+            <strong>{item.title}</strong>
+          </div>
+          {isFilm && (
+            <a
+              href={`https://www.youtube.com/watch?v=${item.youtubeId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ai-modal__yt-link"
+            >
+              Watch on YouTube <ArrowIcon />
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -163,7 +178,7 @@ function FilmCard({ film, featured = false, onOpen }) {
   return (
     <article className={`ai-film-card ai-reveal ${featured ? 'is-featured' : ''}`}>
       <button type="button" className="ai-film-card__media" onClick={() => onOpen({ ...film, mediaType: 'film' })}>
-        <img src={film.thumbnail} alt={`${film.title} film still`} loading={featured ? 'eager' : 'lazy'} />
+        <img src={film.thumbnail} alt={`${film.title} film still`} decoding="async" />
         <span className="ai-film-card__shade" />
         <span className="ai-film-card__play" aria-hidden="true"><PlayIcon /></span>
         <span className="ai-film-card__index">{film.number}</span>
@@ -192,7 +207,7 @@ function ProductFigure({ product, index, onOpen }) {
         onClick={() => onOpen({ ...product, mediaType: 'image' })}
         aria-label={`Open ${product.title}`}
       >
-        <img src={product.image} alt={product.alt} loading="lazy" />
+        <img src={product.image} alt={product.alt} decoding="async" />
         <span className="ai-product__view">View full image <ArrowIcon /></span>
       </button>
       <figcaption>
@@ -209,6 +224,10 @@ function ProductFigure({ product, index, onOpen }) {
 export function AiStudioPage() {
   const [activeMedia, setActiveMedia] = useState(null);
   useRevealObserver();
+
+  const heroFilm = aiFilms[0];
+  const commercialFilms = aiFilms.slice(1, 5);
+  const directorFilm = aiFilms[5];
 
   const whatsappMessage = encodeURIComponent(
     'Hello Ali, I viewed your AI portfolio and would like to discuss a creative role or project.'
@@ -275,10 +294,52 @@ export function AiStudioPage() {
         </div>
 
         <div className="ai-films-grid">
-          {aiFilms.map((film, index) => (
-            <FilmCard key={film.id} film={film} featured={index === 0} onOpen={setActiveMedia} />
+          <FilmCard film={heroFilm} featured onOpen={setActiveMedia} />
+          {commercialFilms.map((film) => (
+            <FilmCard key={film.id} film={film} onOpen={setActiveMedia} />
           ))}
         </div>
+
+        {directorFilm && (
+          <aside className="ai-director-spotlight ai-reveal">
+            <div className="ai-director-spotlight__media">
+              <button
+                type="button"
+                className="ai-director-spotlight__thumb"
+                onClick={() => setActiveMedia({ ...directorFilm, mediaType: 'film' })}
+                aria-label={`Play ${directorFilm.title}`}
+              >
+                <img src={directorFilm.thumbnail} alt={directorFilm.title} decoding="async" />
+                <span className="ai-director-spotlight__play" aria-hidden="true"><PlayIcon /></span>
+                <span className="ai-director-spotlight__badge">DIRECTOR’S NOTE · 2025</span>
+              </button>
+            </div>
+            <div className="ai-director-spotlight__content">
+              <p className="ai-kicker">Vision & Philosophy</p>
+              <h3>{directorFilm.title}</h3>
+              <blockquote className="ai-director-spotlight__quote">
+                “{directorFilm.statement}”
+              </blockquote>
+              <div className="ai-director-spotlight__actions">
+                <button
+                  type="button"
+                  className="ai-button ai-button--primary"
+                  onClick={() => setActiveMedia({ ...directorFilm, mediaType: 'film' })}
+                >
+                  Watch personal note <PlayIcon />
+                </button>
+                <a
+                  href={`https://www.youtube.com/watch?v=${directorFilm.youtubeId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ai-director-spotlight__yt-link"
+                >
+                  Open on YouTube <ArrowIcon />
+                </a>
+              </div>
+            </div>
+          </aside>
+        )}
       </section>
 
       <section id="images" className="ai-images">
